@@ -93,7 +93,7 @@ function run(cmd, args) {
   let child;
   try {
     child = spawn(
-      process.platform === "win32" && shouldUseShellForCommand(cmd) ? `"${cmd}"` : cmd,
+      shouldUseShellForCommand(cmd) ? `"${cmd}"` : cmd,
       args,
       createSpawnOptions(cmd, args),
     );
@@ -118,7 +118,7 @@ function runSync(cmd, args, envOverride) {
   let result;
   try {
     result = spawnSync(
-      process.platform === "win32" && shouldUseShellForCommand(cmd) ? `"${cmd}"` : cmd,
+      shouldUseShellForCommand(cmd) ? `"${cmd}"` : cmd,
       args,
       createSpawnOptions(cmd, args, envOverride),
     );
